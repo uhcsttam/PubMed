@@ -15,7 +15,7 @@ pubmed_ask <- function(query) {
   # change spaces to + and single-quotes to URL-friendly %22 in query
   query = gsub("'", "%22", gsub(" ", "+", query))
   
-  query = paste("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=", 
+  query = paste("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=", 
                 query, "&usehistory=y", sep = "")
   
   cat("Querying PubMed on", as.character(Sys.time()), ":\n", query, "\n\n")
@@ -112,7 +112,7 @@ pubmed_get <- function(query, file, list = FALSE, max = 0, k = 10^3) {
   # batch download loop
   for(i in r:1) { 
     
-    x = paste("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&WebEnv=",
+    x = paste("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&WebEnv=",
               q,"&query_key=1&retmode=xml&retstart=", j, "&retmax=", k, sep = "")
     
     y = paste0(file, str_pad(i, nchar(n), pad = "0"), ".xml")
